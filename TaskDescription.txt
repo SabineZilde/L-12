@@ -1,0 +1,37 @@
+Create a backend for e-commerce store.
+It should have these endpoints:
+
+    GET     /categories
+    POST    /categories             {"description": "foo", "name": "bar"}
+    GET     /categories/{id}
+    PUT     /categories/{id}        {"description": "baz", "name": "biz"}
+    DELETE  /categories/{id}
+
+    GET     /products
+    POST    /products             {"description": "foo", "name": "bar", "price" 10.2, "category": 3}
+    GET     /products/{id}
+    PUT     /products/{id}        {"description": "baz", "name": "biz", "price" 10.2, "category": 3}
+    DELETE  /products/{id}
+
+Category entity will have 2 fields:
+name (string)
+description (string)
+
+Product will have 4 fields:
+name (string)
+description (string)
+price (float)
+category (int) - this should point to a ID in "categories" database.
+
+
+Bonus task:
+
+create endpoint:
+    GET /categories/{id}/products, that woud return list of all the products for this category.
+For example if we have a category with index 1 and we we have 10 products, 3 of witch have the "category" feild with value 1,
+this endpoint would return list of those 3 products like this:
+[
+    {"description": "foo 1", "name": "bar 1", "price" 10.2, "category": 1},
+    {"description": "foo 2", "name": "bar 2", "price" 10.2, "category": 1},
+    {"description": "foo 3", "name": "bar 3", "price" 10.2, "category": 1}
+]
