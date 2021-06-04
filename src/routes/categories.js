@@ -1,5 +1,5 @@
 import express from 'express';
-import { storeCategory, getAllCategories, getAllCategoriesById, updateCategories, deleteCategory } from '../models/Category.js';
+import { storeCategory, getAllCategories, getCategoriesById, updateCategory, deleteCategory } from '../models/Category.js';
 
 const router = express.Router();
 
@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
     const { id } = req.params;
-    const category = getAllCategories();
+    const category = getCategoriesById(id);
     if (category) {
         res.json(category);
         return;
@@ -26,18 +26,18 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
     const { id } = req.params;
-    const category = getAllCategoriesById(id);
+    const category = getCategoriesById(id);
     if (!category) {
         res.status(404).json({error:'Category not found'});
         return;
     }
-    updateCategories(id, category, req.body);
+    updateCategory(id, category, req.body);
     res.json({success: true});
 });
 
 router.delete('/:id', (req, res) => {
     const { id } = req.params;
-    const category = getAllCategoriesById(id);
+    const category = getCategoriesById(id);
     if (!category) {
         res.status(404).json({error:'Category not found'});
         return;

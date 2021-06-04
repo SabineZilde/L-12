@@ -65,6 +65,6 @@ ENTRYPOINT [ "tail", "-f", "/dev/null" ]
 
     replace "test":.... under the "scripts"
     with "dev": "nodemon src/index.js"
-    now you can run it with npm run dev
+    now you can run it with (npm run dev)
 
 6. Write the app
