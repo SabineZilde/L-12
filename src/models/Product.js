@@ -1,4 +1,5 @@
 import { readFileSync, writeFileSync, accessSync } from 'fs';
+import { getCategoriesById } from './Category.js';
 
 const filePath = `${process.cwd()}/data/products.json`
 
@@ -28,7 +29,7 @@ const storeProduct = (data) => {
     const newProduct = {
         name: data.name || '',
         description: data.description || '',
-        price: data.price || 0, //(float) parseFloat(data.price)?
+        price: data.price || 0,
         category: data.category || 0, //(int) - this should point to an ID in "categories" database.
     };
 
@@ -50,7 +51,7 @@ const updateProduct = (id, product, newData) => {
     product.name = newData.name || '';
     product.description = newData.description || '';
     product.price = newData.price || 0;
-    product.category = newData.category;
+    product.category = newData.category || 0;
 
     const products = getAllProducts();
     products[id] = product;

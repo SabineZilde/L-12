@@ -49,10 +49,9 @@ const updateCategory = (id, category, newData) => {
     category.description = newData.description || '';
 
     const categories = getAllCategories();
-    category = categories[id];
-    // category = getCategoriesById(id);
+    categories[id] = category;
 
-    saveFile(category);
+    saveFile(categories);
 };
 
 const deleteCategory = (id) => {
